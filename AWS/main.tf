@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     # S3 bucket for state - to be filled by user
-    bucket = "taz-tf-state"
+    bucket = "your-s3-bucket"
     key    = "eks/terraform.tfstate"
     region = "us-east-1"
   }
