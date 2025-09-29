@@ -1,0 +1,29 @@
+# Resource Group configuration
+resource_group_name = "llmops-rg"
+location           = "East US"
+
+# Cluster configuration
+cluster_name       = "llmops-cluster"
+kubernetes_version = "1.31"
+dns_prefix         = "llmops"
+
+# Default node pool configuration
+default_pool_name     = "default"
+default_vm_size       = "Standard_D2s_v4"  # 2 vCPU, 8 GB RAM
+default_disk_size     = 100
+default_initial_nodes = 1
+default_min_count     = 1
+default_max_count     = 3
+
+# GPU node pool configuration
+gpu_pool_name     = "gpu"
+gpu_vm_size       = "Standard_NC4as_T4_v3"  # 4 vCPU, 28 GB RAM, 1x T4 GPU
+gpu_disk_size     = 100
+gpu_initial_nodes = 1
+gpu_min_count     = 0
+gpu_max_count     = 2
+
+# Network configuration
+vnet_subnet_id = null      # Leave null to use default networking
+network_plugin = "azure"   # Azure CNI for better performance
+network_policy = "azure"   # Azure network policies

@@ -1,0 +1,23 @@
+# Project configuration
+project_id = "your-gcp-project-id"
+region     = "us-east1"
+zone       = "us-east1-c"
+
+# Cluster configuration
+cluster_name    = "llmops-cluster"
+cluster_version = "latest"  # Use "latest" for most recent stable version
+release_channel = "REGULAR"
+
+# Default node pool configuration
+default_pool_name     = "default-pool"
+default_machine_type  = "e2-standard-2"  # 2 vCPU, 8 GB RAM
+default_disk_size     = 100
+default_initial_nodes = 1
+
+# GPU node pool configuration
+gpu_pool_name     = "gpu-pool"
+gpu_machine_type  = "n1-highmem-2"      # 2 vCPU, 13 GB RAM
+gpu_type          = "nvidia-tesla-t4"    # T4 GPU (cost-effective for AI/ML)
+gpu_count         = 1
+gpu_disk_size     = 100
+gpu_initial_nodes = 1

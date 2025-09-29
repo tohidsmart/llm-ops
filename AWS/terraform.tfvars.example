@@ -1,0 +1,14 @@
+# AWS Configuration
+region          = "us-east-1"
+cluster_name    = "llmops-cluster"
+cluster_version = "1.31"
+
+# VPC Configuration
+vpc_cidr = "10.0.0.0/16"
+
+# Node Group Configuration
+system_instance_type = "t3.medium"     # 2 vCPU, 4 GB RAM
+gpu_instance_type    = "g4dn.xlarge"   # 4 vCPU, 16 GB RAM, 1x T4 GPU
+
+# Optional: Spot instances for cost savings
+# spot_instance_types = ["g4dn.xlarge", "g4dn.2xlarge"]
