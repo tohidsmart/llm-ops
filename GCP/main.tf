@@ -10,8 +10,8 @@ terraform {
 
   backend "gcs" {
     # GCS bucket for state - update with your bucket name
-    bucket = "your-terraform-state-bucket"
-    prefix = "gke/terraform.tfstate"
+    bucket = "quixotic-prism-473023-n8-terraform-state"
+    prefix = "llmops"
   }
 }
 

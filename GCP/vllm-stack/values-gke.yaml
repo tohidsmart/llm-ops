@@ -1,0 +1,55 @@
+servingEngineSpec:
+  strategy:
+    type: Recreate
+  runtimeClassName: ""
+  modelSpec:
+  - name: "mistral-7b"
+    nodeSelectorTerms:
+      - matchExpressions:
+          - key: NodeType
+            operator: In
+            values:
+              - gpu
+    repository: "vllm/vllm-openai"
+    tag: "v0.6.3.post1"
+    modelURL: "TheBloke/Mistral-7B-Instruct-v0.2-AWQ"
+    replicaCount: 1
+
+    requestCPU: 1.8
+    requestMemory: "10Gi"
+    requestGPU: 1
+
+    pvcStorage: "50Gi"
+
+    vllmConfig:
+      maxModelLen: 8192
+      dtype: "half"
+      gpuMemoryUtilization: 0.9
+      quantization: "awq"
+      extraArgs: ["--disable-log-requests"]
+
+    hf_token:
+      secretName: hf-token-secret
+      secretKey: token
+
+    # Environment variables for NVIDIA GPU access on GKE COS
+    env:
+      - name: LD_LIBRARY_PATH
+        value: "/usr/local/nvidia/lib64"
+
+    # Extra volume mounts for NVIDIA GPU access on GKE COS
+    extraVolumeMounts:
+      - name: nvidia-install-dir-host
+        mountPath: /usr/local/nvidia
+        readOnly: true
+
+    extraVolumes:
+      - name: nvidia-install-dir-host
+        hostPath:
+          path: /home/kubernetes/bin/nvidia
+          type: Directory
+
+
+routerSpec:
+  strategy:
+    type: Recreate

@@ -1,0 +1,3 @@
+Create or render a K8s Secret
+Copy the HF TOKEN 
+Refrences it in the deployment

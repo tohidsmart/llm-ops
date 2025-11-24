@@ -10,8 +10,8 @@ terraform {
 
   backend "azurerm" {
     # Azure Storage Account for state - update with your values
-    resource_group_name  = "your-terraform-state-rg"
-    storage_account_name = "yourtfstatestorage"
+    resource_group_name  = "test-rg"
+    storage_account_name = "taztfstate"
     container_name       = "tfstate"
     key                  = "aks/terraform.tfstate"
   }
